@@ -197,10 +197,23 @@
       color: var(--text-primary);
     }
 
+    .nav-links a[aria-current="page"] {
+      border: 1.5px solid var(--snail-cyan);
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
     /* Hero */
     .hero {
       padding: clamp(3.5rem, 8vw, 6.25rem) 0 clamp(2.5rem, 6vw, 4.5rem);
       text-align: center;
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-emblem {
@@ -643,12 +656,14 @@
 
       .nav-links {
         width: 100%;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem 0.35rem;
       }
 
       .nav-links a {
-        padding: 0.35rem 0.5rem;
-        font-size: 0.86rem;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.85rem;
       }
     }
 
@@ -678,9 +693,11 @@
       </a>
       <nav aria-label="主导航">
         <ul class="nav-links">
+          <li><a href="./index.html" aria-current="page">首页</a></li>
           <li><a href="#games">游戏作品</a></li>
           <li><a href="#about">开发理念</a></li>
-          <li><a href="#privacy">厂商与隐私</a></li>
+          <li><a href="#publisher">厂商信息</a></li>
+          <li><a href="./privacy.html">隐私政策</a></li>
           <li><a href="#contact">联系我们</a></li>
         </ul>
       </nav>
@@ -689,7 +706,7 @@
 
   <main id="main-content">
     <section id="top" class="hero">
-      <div class="container">
+      <div class="container hero-inner">
         <div class="hero-emblem">
           <img
             class="hero-logo"
@@ -727,8 +744,8 @@
         <div class="card-container">
           <article class="card">
             <img
-              src="./logo.png"
-              alt="慢慢向前工作室出品《守塔甩竿打螃蟹》品牌徽章"
+              src="./game-harbor-defense.png"
+              alt="《守塔甩竿打螃蟹》游戏图标：海港激光炮塔迎击深海晶甲巨蟹"
               width="220"
               height="220"
               loading="lazy"
@@ -806,12 +823,12 @@
       </div>
     </section>
 
-    <section id="privacy" class="section" aria-labelledby="privacy-heading">
+    <section id="publisher" class="section" aria-labelledby="publisher-heading">
       <div class="container">
         <div class="section-head">
           <div>
             <span class="section-kicker">Publisher &amp; Compliance</span>
-            <h2 id="privacy-heading">厂商资质信息与隐私声明</h2>
+            <h2 id="publisher-heading">开发商资质与合规指引</h2>
           </div>
           <p class="section-note">用于游戏分发平台核验与玩家技术支持</p>
         </div>
@@ -846,19 +863,25 @@
           </article>
 
           <article class="card">
-            <span class="pillar-index">Privacy Policy</span>
+            <span class="pillar-index">Privacy &amp; User Rights</span>
             <header>
-              <h3>玩家隐私保护声明</h3>
+              <h3>隐私政策与用户权益指引</h3>
             </header>
             <div class="card-summary">
               <p>
-                慢慢向前工作室高度重视玩家隐私与数据安全。我们出品的游戏仅在本地存档、基础运行稳定性统计，以及遵循平台规范（如 TapTap 登录/成就/合规激励广告服务）的必要范围内使用相关数据。
+                我们严格遵循最小必要原则处理游戏运行、存档、TapTap 登录成就与合规激励广告相关数据，不采集通讯录、短信、通话记录或精准定位等无关敏感信息。
               </p>
-              <p>
-                我们不会收集与游戏功能无关的敏感个人信息，也不会向无关第三方出售或共享玩家数据。如您对隐私保护、青少年模式或账号数据清除有任何需求，请发送邮件至官方支持邮箱，我们将尽快核实处理。
-              </p>
+              <dl class="meta-list">
+                <div class="meta-row">
+                  <dt>独立隐私政策页</dt>
+                  <dd><a href="https://ai-chen2050.github.io/studio/privacy.html">https://ai-chen2050.github.io/studio/privacy.html</a></dd>
+                </div>
+              </dl>
             </div>
-            <footer>最近更新：2026 年 11 月</footer>
+            <footer>
+              <span>最近更新：2026 年 11 月 18 日</span>
+              <a class="card-link" href="./privacy.html">查看完整《隐私政策》全文 &rarr;</a>
+            </footer>
           </article>
         </div>
       </div>
@@ -892,6 +915,8 @@
       <span>&copy; 2026 慢慢向前工作室 · StepForward Studio</span>
       <span>
         <a href="https://ai-chen2050.github.io/studio/">ai-chen2050.github.io/studio</a>
+        &middot;
+        <a href="./privacy.html">隐私政策</a>
         &middot;
         <a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>
       </span>

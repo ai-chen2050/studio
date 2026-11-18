@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>隐私政策 · 慢慢向前工作室（StepForward Studio）</title>
+  <meta name="description" content="慢慢向前工作室（StepForward Studio）游戏产品与服务完整隐私政策，涵盖《守塔甩竿打螃蟹》信息收集范围、权限说明、第三方 SDK、数据存储安全、未成年人保护及联系邮箱 blake.chen94@gmail.com。">
+  <link rel="canonical" href="https://ai-chen2050.github.io/studio/privacy.html">
+  <link rel="icon" type="image/png" href="./logo.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="隐私政策 · 慢慢向前工作室">
+  <meta property="og:description" content="慢慢向前工作室（StepForward Studio）游戏产品隐私保护、权限说明、第三方 SDK 目录及用户权利行使指引。">
+  <meta property="og:url" content="https://ai-chen2050.github.io/studio/privacy.html">
+  <meta property="og:image" content="https://ai-chen2050.github.io/studio/logo.png">
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --ocean-abyss: #071426;
+      --ocean-navy: #0d2036;
+      --ocean-surface: #112844;
+      --ocean-elevated: #163354;
+      --ocean-glass: rgba(13, 32, 54, 0.86);
+
+      --snail-cyan: #38bdf8;
+      --snail-mint: #6ee7b7;
+      --snail-amber: #fbbf24;
+
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --border-subtle: rgba(148, 163, 184, 0.18);
+      --border-accent: rgba(56, 189, 248, 0.34);
+
+      --thumb: #24486f;
+      --track: #071426;
+
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+
+      --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+      scrollbar-color: var(--thumb) var(--track);
+      scrollbar-width: thin;
+    }
+
+    @supports not (scrollbar-color: auto) {
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--track);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--thumb);
+        border-radius: 999px;
+        border: 2px solid var(--track);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--ocean-abyss);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      line-height: 1.75;
+      background:
+        radial-gradient(880px 500px at 14% -5%, rgba(56, 189, 248, 0.13), transparent 65%),
+        radial-gradient(720px 440px at 88% 12%, rgba(110, 231, 183, 0.1), transparent 60%),
+        linear-gradient(180deg, var(--ocean-navy) 0%, var(--ocean-abyss) 45%, #050f1d 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--snail-cyan);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--snail-cyan);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      padding: 0.65rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: var(--snail-cyan);
+      color: var(--ocean-abyss);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
+
+    .container {
+      width: min(1040px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: var(--ocean-glass);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 68px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--snail-amber), var(--snail-cyan) 55%, var(--snail-mint));
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.55);
+      flex-shrink: 0;
+    }
+
+    .brand-en {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--text-primary);
+    }
+
+    .nav-links a[aria-current="page"] {
+      border: 1.5px solid var(--snail-cyan);
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* Document Header */
+    .doc-hero {
+      padding: clamp(2.5rem, 6vw, 4rem) 0 1.75rem;
+    }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--snail-mint);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .doc-kicker {
+      display: inline-block;
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-pill);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--snail-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .doc-hero h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3.6vw, 2.55rem);
+      line-height: 1.25;
+      color: var(--text-primary);
+    }
+
+    .doc-lead {
+      margin: 0.95rem 0 0;
+      max-width: 72ch;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .meta-strip {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.9rem;
+      padding: 1.15rem 1.35rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(155deg, rgba(22, 51, 84, 0.7), rgba(13, 32, 54, 0.92));
+      border: 1px solid var(--border-subtle);
+    }
+
+    .meta-item {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .meta-item span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item strong,
+    .meta-item a {
+      font-size: 0.94rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .meta-item a:hover {
+      color: var(--snail-cyan);
+      text-decoration: underline;
+    }
+
+    /* Quick TOC */
+    .toc-box {
+      margin: 0 0 2rem;
+      padding: 1.25rem 1.45rem;
+      border-radius: var(--radius-lg);
+      background: rgba(17, 40, 68, 0.65);
+      border: 1px solid var(--border-accent);
+    }
+
+    .toc-title {
+      margin: 0 0 0.75rem;
+      font-size: 0.96rem;
+      color: var(--snail-mint);
+      font-weight: 700;
+    }
+
+    .toc-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.45rem 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .toc-list a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .toc-list a:hover {
+      color: var(--snail-cyan);
+      text-decoration: underline;
+    }
+
+    /* Policy Articles */
+    .policy-flow {
+      display: grid;
+      gap: 1.35rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .policy-section {
+      padding: clamp(1.3rem, 3vw, 1.85rem);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(160deg, rgba(22, 51, 84, 0.56), rgba(13, 32, 54, 0.9));
+      border: 1px solid var(--border-subtle);
+      scroll-margin-top: 86px;
+    }
+
+    .policy-section h2 {
+      margin: 0 0 0.85rem;
+      font-size: clamp(1.18rem, 2.2vw, 1.4rem);
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .policy-section h3 {
+      margin: 1.15rem 0 0.5rem;
+      font-size: 1rem;
+      color: var(--snail-cyan);
+    }
+
+    .policy-section p {
+      margin: 0.55rem 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .policy-section ul {
+      margin: 0.5rem 0 0.75rem;
+      padding-left: 1.3rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .policy-section li {
+      margin-bottom: 0.45rem;
+    }
+
+    .policy-section li strong {
+      color: var(--text-primary);
+    }
+
+    .notice-callout {
+      margin-top: 0.9rem;
+      padding: 0.95rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: rgba(110, 231, 183, 0.08);
+      border: 1px solid rgba(110, 231, 183, 0.28);
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .notice-callout strong {
+      color: var(--snail-mint);
+    }
+
+    /* Responsive Tables (following modern-web-guidance responsive-table pattern) */
+    .table-wrapper {
+      margin-top: 1rem;
+      overflow: auto;
+      max-inline-size: 100%;
+      max-block-size: min(560px, 80dvh);
+      container-type: inline-size;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-accent);
+      background: rgba(7, 20, 38, 0.78);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    caption {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--snail-cyan);
+      background: rgba(17, 40, 68, 0.95);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    thead {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 1;
+    }
+
+    thead th {
+      padding: 0.8rem 0.95rem;
+      background: #143254;
+      color: var(--text-primary);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-accent);
+      white-space: nowrap;
+    }
+
+    tbody th,
+    tbody td {
+      padding: 0.8rem 0.95rem;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    tbody tr:last-child th,
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody th {
+      position: sticky;
+      inset-inline-start: 0;
+      background: var(--ocean-surface);
+      color: var(--text-primary);
+      font-weight: 600;
+      min-inline-size: 9.5rem;
+      z-index: 1;
+    }
+
+    .data-table--usage {
+      --label-2: "涉及信息或数据类型";
+      --label-3: "收集 / 使用目的";
+      --label-4: "必要性与触发方式";
+    }
+
+    .data-table--sdk {
+      --label-2: "所属合作方";
+      --label-3: "收集 / 使用信息类型";
+      --label-4: "处理目的与合规说明";
+    }
+
+    @container (width < 600px) {
+      table,
+      caption,
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        display: block;
+      }
+
+      thead {
+        /* MANDATORY: Hide column header from layout and screen readers. */
+        display: none;
+      }
+
+      tr {
+        margin: 0.75rem;
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: rgba(17, 40, 68, 0.5);
+      }
+
+      tbody th {
+        position: sticky;
+        inset-block-start: 0;
+        z-index: 2;
+        background: var(--ocean-elevated);
+        border-bottom: 1px solid var(--border-accent);
+      }
+
+      tbody td {
+        padding: 0.65rem 0.9rem;
+      }
+
+      td:nth-child(2)::before {
+        content: var(--label-2) "：";
+        font-weight: 700;
+        color: var(--snail-mint);
+      }
+
+      td:nth-child(3)::before {
+        content: var(--label-3) "：";
+        font-weight: 700;
+        color: var(--snail-mint);
+      }
+
+      td:nth-child(4)::before {
+        content: var(--label-4) "：";
+        font-weight: 700;
+        color: var(--snail-mint);
+      }
+    }
+
+    /* Contact & Action Buttons */
+    .contact-actions {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .email-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: rgba(7, 20, 38, 0.8);
+      border: 1px solid var(--border-accent);
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--snail-cyan);
+      text-decoration: none;
+    }
+
+    .email-pill:hover {
+      border-color: var(--snail-mint);
+      color: var(--snail-mint);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-pill);
+      background: rgba(17, 40, 68, 0.85);
+      border: 1px solid var(--border-accent);
+      color: var(--text-primary);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--ocean-elevated);
+      border-color: var(--snail-cyan);
+    }
+
+    .copy-feedback {
+      min-height: 1.4em;
+      font-size: 0.88rem;
+      color: var(--snail-mint);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 2rem 0 2.75rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+    }
+
+    .footer-inner a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      color: var(--snail-cyan);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .nav-bar {
+        flex-wrap: wrap;
+        padding: 0.65rem 0;
+      }
+
+      .brand-en {
+        display: none;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem 0.35rem;
+      }
+
+      .nav-links a {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳至隐私政策正文</a>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="./index.html" aria-label="返回慢慢向前工作室官网首页">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>慢慢向前工作室</span>
+        <span class="brand-en">StepForward Studio</span>
+      </a>
+      <nav aria-label="主导航">
+        <ul class="nav-links">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="./index.html#games">游戏作品</a></li>
+          <li><a href="./index.html#about">开发理念</a></li>
+          <li><a href="./index.html#publisher">厂商信息</a></li>
+          <li><a href="./privacy.html" aria-current="page">隐私政策</a></li>
+          <li><a href="./index.html#contact">联系我们</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="doc-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="./index.html">&larr; 返回官网首页</a>
+          <span aria-hidden="true">/</span>
+          <span>法律与合规文档</span>
+        </div>
+        <div class="doc-kicker">Privacy Policy · User Data Compliance</div>
+        <h1>慢慢向前工作室游戏产品隐私政策</h1>
+        <p class="doc-lead">
+          慢慢向前工作室（英文别名：StepForward Studio，以下简称“我们”）深知个人信息与隐私安全对每位玩家的重要性。本《隐私政策》适用于我们开发、运营的《守塔甩竿打螃蟹》及相关游戏产品、官方主页及玩家支持服务。在使用我们的产品前，请您仔细阅读并理解本政策内容。
+        </p>
+
+        <div class="meta-strip">
+          <div class="meta-item">
+            <span>运营开发主体</span>
+            <strong>慢慢向前工作室（StepForward Studio）</strong>
+          </div>
+          <div class="meta-item">
+            <span>适用游戏产品</span>
+            <strong>《守塔甩竿打螃蟹》及工作室旗下产品</strong>
+          </div>
+          <div class="meta-item">
+            <span>生效 / 更新日期</span>
+            <strong>2026 年 11 月 18 日</strong>
+          </div>
+          <div class="meta-item">
+            <span>隐私保护联系邮箱</span>
+            <a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <nav class="toc-box" aria-label="隐私政策目录">
+        <p class="toc-title">目录导航</p>
+        <ol class="toc-list">
+          <li><a href="#sec-1">1. 我们如何收集和使用您的个人信息</a></li>
+          <li><a href="#sec-2">2. 设备系统权限调用说明</a></li>
+          <li><a href="#sec-3">3. 第三方 SDK 及平台服务说明</a></li>
+          <li><a href="#sec-4">4. 信息的存储地点、期限与安全保护</a></li>
+          <li><a href="#sec-5">5. 信息的共享、转让与公开披露</a></li>
+          <li><a href="#sec-6">6. 本地存储与缓存技术说明</a></li>
+          <li><a href="#sec-7">7. 您的个人信息权利（查询/删除/注销）</a></li>
+          <li><a href="#sec-8">8. 未成年人及儿童个人信息保护</a></li>
+          <li><a href="#sec-9">9. 隐私政策的修订与通知</a></li>
+          <li><a href="#sec-10">10. 如何联系我们</a></li>
+        </ol>
+      </nav>
+
+      <div class="policy-flow">
+        <section id="sec-1" class="policy-section">
+          <h2>1. 我们如何收集和使用您的个人信息</h2>
+          <p>
+            我们严格遵循合法、正当、最小必要和公开透明原则，仅在实现游戏核心玩法、账号登录防沉迷合规、成就同步及您主动触发功能所需的最小范围内收集和使用相关信息：
+          </p>
+
+          <div tabindex="0" role="region" aria-labelledby="data-table-caption" class="table-wrapper">
+            <table class="data-table--usage">
+              <caption id="data-table-caption">表 1：业务功能与必要信息收集使用清单</caption>
+              <thead>
+                <tr>
+                  <th scope="col">业务功能场景</th>
+                  <th scope="col">涉及信息或数据类型</th>
+                  <th scope="col">收集 / 使用目的</th>
+                  <th scope="col">必要性与触发方式</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">本地游戏存档与设置</th>
+                  <td>关卡进度、晶能/资源数值、炮台/鱼竿强化状态、渔获图鉴、音量与键位配置</td>
+                  <td>保障单机/轻联网玩法正常推进、断线或重启后恢复个人进度</td>
+                  <td>仅保存在本地应用沙盒中；实现游戏基本功能所必需</td>
+                </tr>
+                <tr>
+                  <th scope="row">平台账号登录与防沉迷核验状态</th>
+                  <td>发行平台授权标识（如 TapTap OpenID/UnionID）、昵称与头像（授权时）、防沉迷实名校验结果与成年状态标记</td>
+                  <td>识别玩家身份以同步平台存档或成就，并依法落实国家未成年人网络游戏防沉迷限制</td>
+                  <td>在接入平台账号或联网运行期间由官方平台侧校验，我们不单独存储身份证原件号码</td>
+                </tr>
+                <tr>
+                  <th scope="row">游戏成就与战绩统计</th>
+                  <td>关卡波次达成记录、钓鱼图鉴进度及成就解锁事件标识</td>
+                  <td>用于在发行平台（如 TapTap 成就系统）为您点亮并展示荣誉奖杯</td>
+                  <td>仅在达成成就条件时上传对应成就事件，不含额外隐私数据</td>
+                </tr>
+                <tr>
+                  <th scope="row">主动触发式激励视频广告</th>
+                  <td>设备基础参数（操作系统版本、屏幕分辨率、网络类型）及广告播放完成状态回调</td>
+                  <td>在您主动点击激励广告入口后加载广告视频，并在完整观看后发放游戏内资源奖励</td>
+                  <td>完全由用户主动点击触发；拒绝观看不影响核心单机与关卡体验</td>
+                </tr>
+                <tr>
+                  <th scope="row">基础运行与崩溃诊断日志</th>
+                  <td>设备型号、系统版本、运行报错堆栈日志（不包含聊天记录或个人文件）</td>
+                  <td>排查闪退、渲染异常与帧率故障，持续改善软件兼容性与稳定性</td>
+                  <td>仅发生异常日志记录或用户主动反馈问题时用于排错</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="notice-callout">
+            <strong>关于超范围采集的明确承诺：</strong>除上述实现产品功能与法律合规所必需的数据外，我们不会以任何形式后台静默读取您的剪贴板内容、应用安装列表（非必要场景）、浏览器历史或社交关系链。
+          </div>
+        </section>
+
+        <section id="sec-2" class="policy-section">
+          <h2>2. 设备系统权限调用说明</h2>
+          <p>
+            在您运行我们的游戏过程中，游戏客户端本身遵循权限最小化原则，仅在必要时使用以下基础运行能力：
+          </p>
+          <ul>
+            <li><strong>网络访问权限（INTERNET / 网络状态检查）</strong>：用于在接入发行平台账号认证、防沉迷状态核验、成就同步以及您主动请求观看激励视频广告时与服务接口通信。</li>
+            <li><strong>应用沙盒本地存储（沙盒内读写）</strong>：用于在应用私有目录内保存您的游戏存档、音效偏好与操作配置，不会扫描您的个人照片或外部文档目录。</li>
+          </ul>
+          <p>
+            我们<strong>不会向您申请或调用</strong>以下敏感系统权限：相机（摄像头）、麦克风（录音）、通讯录、短信、通话记录、日历、精确地理位置（GPS）、身体传感器或相册写入权限。
+          </p>
+        </section>
+
+        <section id="sec-3" class="policy-section">
+          <h2>3. 第三方 SDK 及平台服务说明</h2>
+          <p>
+            为确保游戏依法合规运营、提供稳定的平台账号与激励视频广告服务，我们的产品可能会集成具备严格安全资质的第三方/发行平台 SDK。我们会对合作方 SDK 的接入行为进行审查，并要求其遵守最小必要原则：
+          </p>
+
+          <div tabindex="0" role="region" aria-labelledby="sdk-table-caption" class="table-wrapper">
+            <table class="data-table--sdk">
+              <caption id="sdk-table-caption">表 2：第三方 SDK 接入清单</caption>
+              <thead>
+                <tr>
+                  <th scope="col">第三方服务 / SDK 名称</th>
+                  <th scope="col">所属合作方</th>
+                  <th scope="col">收集 / 使用信息类型</th>
+                  <th scope="col">处理目的与合规说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">TapTap 开发者服务（TapSDK / UrhoX 内置模块）</th>
+                  <td>易玩（上海）网络科技有限公司（TapTap）</td>
+                  <td>TapTap 账号基础授权标识、合规实名防沉迷校验状态、成就事件标识、网络类型</td>
+                  <td>用于提供官方账号登录、依法落实实名与防沉迷限制、同步 Tap 成就；遵循 TapTap 官方隐私保护规则</td>
+                </tr>
+                <tr>
+                  <th scope="row">TapTap Maker 激励视频广告组件</th>
+                  <td>TapTap Maker 平台及合规广告服务商</td>
+                  <td>基础设备软硬件属性（OS 版本、屏幕尺寸、网络状态）及广告加载/完播回调标记</td>
+                  <td>仅在玩家主动点击观看奖励视频时调用，用于在完整播放后核发游戏内对应激励；不会强制弹出或绑定敏感权限</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="sec-4" class="policy-section">
+          <h2>4. 信息的存储地点、期限与安全保护措施</h2>
+          <ul>
+            <li><strong>存储地点</strong>：您的本地游戏存档主要保留在您所使用的终端设备本地应用沙盒中；涉及平台账号校验、云端存档或成就记录的必要数据，均遵循所接入发行平台的规定存储于中华人民共和国境内服务器。</li>
+            <li><strong>存储期限</strong>：我们仅在提供产品服务、解决用户反馈及履行法定合规义务所需的最短期限内保留相关数据。当您主动卸载应用并清除本地数据，或经官方邮箱确认完成账号数据删除申请后，相关数据将被删除或匿名化处理。</li>
+            <li><strong>安全措施</strong>：我们采用传输层加密（HTTPS）、最小权限访问控制、沙盒数据隔离等行业通行安全手段防止信息泄露、损毁或丢失。</li>
+          </ul>
+        </section>
+
+        <section id="sec-5" class="policy-section">
+          <h2>5. 信息的共享、转让与公开披露</h2>
+          <p>
+            我们不会将您的任何个人信息出售、出租或交易给任何无关第三方。我们仅在以下特定情形下按最小必要范围处理相关信息：
+          </p>
+          <ul>
+            <li><strong>获得您的明确同意或主动触发</strong>：例如您主动点击通过 TapTap 登录授权，或主动选择观看激励视频广告。</li>
+            <li><strong>平台运行与合规需要</strong>：按照国家实名认证及防沉迷管理要求，通过官方平台渠道配合必要的合规校验。</li>
+            <li><strong>法律法规或监管要求</strong>：依据适用法律法规、司法判决或政府主管部门依法提出的强制性要求。</li>
+          </ul>
+        </section>
+
+        <section id="sec-6" class="policy-section">
+          <h2>6. 本地存储与缓存技术说明</h2>
+          <p>
+            我们的游戏与官网页面可能使用设备本地存储或同类缓存技术（如应用私有存档文件或网页本地缓存），用于在本地保存您的战役进度、图鉴解锁状态、音效设定及界面适配偏好，减少重复加载并提升操作响应速度。
+          </p>
+          <p>
+            本官网（<code>https://ai-chen2050.github.io/studio/</code>）为纯静态网页，不写入跨站追踪 Cookie，也不会分析或追踪您的浏览画像。您随时可以通过设备应用管理清空应用缓存或重置游戏存档。
+          </p>
+        </section>
+
+        <section id="sec-7" class="policy-section">
+          <h2>7. 您的个人信息权利</h2>
+          <p>
+            在您使用我们的游戏产品期间，您依法享有以下权利，并可通过本政策第 10 条的官方邮箱向我们提出请求：
+          </p>
+          <ul>
+            <li><strong>查询与核实权利</strong>：您有权向我们查询我们保存的与您账号相关的游戏数据范围与处理规则。</li>
+            <li><strong>更正与补充权利</strong>：若您发现您的支持工单或相关资料存在错误，可随时联系我们进行更正。</li>
+            <li><strong>撤回授权与停止广告触发</strong>：您可通过系统权限设置关闭联网权限或拒绝触发激励视频广告功能；对于纯本地存档，您可通过设备应用设置随时清除。</li>
+            <li><strong>删除信息与账号注销指引</strong>：如您希望删除由本工作室持有的平台关联存档记录或支持工单信息，请使用关联账号或联系邮箱发送主题为“<strong>数据删除 / 注销申请 + 游戏名称 + 平台ID</strong>”的邮件至 <a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>。我们将在核验您的身份合理性后，于 <strong>15 个工作日</strong>内完成处理并回复结果。</li>
+          </ul>
+        </section>
+
+        <section id="sec-8" class="policy-section">
+          <h2>8. 未成年人及儿童个人信息保护</h2>
+          <p>
+            我们高度重视未成年人保护，并严格遵守国家新闻出版署关于防止未成年人沉迷网络游戏的各项监管要求：
+          </p>
+          <ul>
+            <li>凡接入平台联网或激励服务场景，均严格依据发行平台提供的实名认证与防沉迷系统执行游戏时长与充值/消费限制，未通过实名校验的账号将受到相应限制。</li>
+            <li>若您是未满 18 周岁的未成年人（尤其是未满 14 周岁的儿童），请在您的父母或其他法定监护人的陪同、指导和明确同意下阅读本政策并使用我们的产品。</li>
+            <li>如监护人发现我们在未获监护人事先同意的情况下收集或存储了儿童相关信息，或希望查阅、修改、删除相关记录，请第一时间发信至 <a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>，我们将在核实监护关系后尽快予以清除处理。</li>
+          </ul>
+        </section>
+
+        <section id="sec-9" class="policy-section">
+          <h2>9. 隐私政策的修订与通知</h2>
+          <p>
+            随着游戏功能迭代（例如新增多人玩法、新平台适配或 SDK 合规升级）或法律法规调整，我们可能会适时修订本《隐私政策》。
+          </p>
+          <p>
+            任何修订版本都将及时更新发布于本页面（<code>https://ai-chen2050.github.io/studio/privacy.html</code>），并标明最新的生效日期；若涉及收集范围或用户权利的重大变更，我们还会在游戏内公告或更新说明的显著位置向您作出提示。若您在政策更新后继续使用我们的服务，即表示您已充分阅读并接受更新后的条款。
+          </p>
+        </section>
+
+        <section id="sec-10" class="policy-section">
+          <h2>10. 如何联系我们</h2>
+          <p>
+            如您对本《隐私政策》内容、游戏数据合规情况、未成年人保护或您的个人信息权利有任何疑问、投诉或建议，请通过以下官方联系方式与我们的数据保护联络人取得联系：
+          </p>
+          <ul>
+            <li><strong>开发与运营主体</strong>：慢慢向前工作室（StepForward Studio）</li>
+            <li><strong>官方网站</strong>：<a href="https://ai-chen2050.github.io/studio/">https://ai-chen2050.github.io/studio/</a></li>
+            <li><strong>隐私与支持专用邮箱</strong>：<a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a></li>
+            <li><strong>响应承诺</strong>：我们通常会在收到您的邮件请求后 <strong>15 个工作日内</strong>完成核查与答复（工作日一般于 48 小时内初步响应）。</li>
+          </ul>
+
+          <div class="contact-actions">
+            <a class="email-pill" href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>
+            <button type="button" class="btn-secondary" id="copy-email-btn">复制联系邮箱</button>
+          </div>
+          <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 慢慢向前工作室 · StepForward Studio</span>
+      <span>
+        <a href="./index.html">返回工作室首页</a>
+        &middot;
+        <a href="https://ai-chen2050.github.io/studio/privacy.html">隐私政策</a>
+        &middot;
+        <a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const copyBtn = document.getElementById("copy-email-btn");
+      const feedback = document.getElementById("copy-feedback");
+      const email = "blake.chen94@gmail.com";
+
+      if (!copyBtn || !feedback) {
+        return;
+      }
+
+      copyBtn.addEventListener("click", async function () {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(email);
+            feedback.textContent = "已复制官方邮箱：" + email;
+          } else {
+            feedback.textContent = "请直接复制或点击邮箱：" + email;
+          }
+        } catch (_err) {
+          feedback.textContent = "浏览器限制了剪贴板权限，请直接点击邮箱发送邮件。";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
