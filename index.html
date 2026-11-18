@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>慢慢向前工作室 · StepForward Studio — 独立游戏开发</title>
+  <meta name="description" content="慢慢向前工作室（StepForward Studio）官方网站。专注打磨轻量化、富有手感的独立游戏作品，代表作《守塔甩竿打螃蟹》。联系邮箱：blake.chen94@gmail.com。">
+  <link rel="canonical" href="https://ai-chen2050.github.io/studio/">
+  <link rel="icon" type="image/png" href="./logo.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="慢慢向前工作室 · StepForward Studio">
+  <meta property="og:description" content="像像素海螺一样稳步前行，打磨有温度、有手感、耐玩的独立游戏。">
+  <meta property="og:url" content="https://ai-chen2050.github.io/studio/">
+  <meta property="og:image" content="https://ai-chen2050.github.io/studio/logo.png">
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --ocean-abyss: #071426;
+      --ocean-navy: #0d2036;
+      --ocean-surface: #112844;
+      --ocean-elevated: #163354;
+      --ocean-glass: rgba(13, 32, 54, 0.82);
+
+      --snail-cyan: #38bdf8;
+      --snail-mint: #6ee7b7;
+      --snail-amber: #fbbf24;
+
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --border-subtle: rgba(148, 163, 184, 0.18);
+      --border-accent: rgba(56, 189, 248, 0.34);
+
+      --thumb: #24486f;
+      --track: #071426;
+
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+
+      --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+      scrollbar-color: var(--thumb) var(--track);
+      scrollbar-width: thin;
+    }
+
+    @supports not (scrollbar-color: auto) {
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--track);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--thumb);
+        border-radius: 999px;
+        border: 2px solid var(--track);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--ocean-abyss);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      line-height: 1.65;
+      background:
+        radial-gradient(900px 540px at 15% -6%, rgba(56, 189, 248, 0.14), transparent 65%),
+        radial-gradient(760px 480px at 88% 8%, rgba(110, 231, 183, 0.11), transparent 60%),
+        radial-gradient(960px 620px at 50% 100%, rgba(251, 191, 36, 0.06), transparent 65%),
+        linear-gradient(180deg, var(--ocean-navy) 0%, var(--ocean-abyss) 52%, #050f1d 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--snail-cyan);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      padding: 0.65rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: var(--snail-cyan);
+      color: var(--ocean-abyss);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: var(--ocean-glass);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 68px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--snail-amber), var(--snail-cyan) 55%, var(--snail-mint));
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.55);
+      flex-shrink: 0;
+    }
+
+    .brand-en {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--text-primary);
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(3.5rem, 8vw, 6.25rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+      text-align: center;
+    }
+
+    .hero-emblem {
+      position: relative;
+      display: inline-flex;
+      padding: 10px;
+      border-radius: 28px;
+      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.22), rgba(13, 32, 54, 0.92) 72%);
+      border: 1px solid var(--border-accent);
+      box-shadow:
+        0 20px 50px rgba(3, 10, 22, 0.65),
+        0 0 38px rgba(56, 189, 248, 0.14);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-logo {
+      width: 148px;
+      height: 148px;
+      border-radius: 20px;
+      object-fit: cover;
+      background-color: var(--ocean-navy);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.95rem;
+      border-radius: var(--radius-pill);
+      background: rgba(110, 231, 183, 0.1);
+      border: 1px solid rgba(110, 231, 183, 0.28);
+      color: var(--snail-mint);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4.8vw, 3.25rem);
+      line-height: 1.18;
+      letter-spacing: 0.03em;
+      color: var(--text-primary);
+    }
+
+    .hero-subtitle {
+      margin: 0.45rem 0 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--snail-cyan);
+    }
+
+    .hero-tagline {
+      margin: 1.25rem auto 0;
+      max-width: 62ch;
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+    }
+
+    .hero-actions {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.45rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--snail-cyan), #0ea5e9);
+      color: #061322;
+      box-shadow: 0 10px 26px rgba(14, 165, 233, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.38);
+    }
+
+    .btn-secondary {
+      background: rgba(17, 40, 68, 0.85);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      background: var(--ocean-elevated);
+      border-color: var(--snail-cyan);
+    }
+
+    /* Sections */
+    .section {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--snail-cyan);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.8vw, 1.95rem);
+      line-height: 1.25;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    /* Cards (direct children for regions, :has(> img) + @container for media cards, subgrid for uniform row tracks) */
+    .card-container {
+      container-type: inline-size;
+    }
+
+    .card {
+      display: grid;
+      gap: 1rem 1.5rem;
+      padding: clamp(1.35rem, 3vw, 1.9rem);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(160deg, rgba(22, 51, 84, 0.72), rgba(13, 32, 54, 0.94));
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 42px rgba(4, 11, 22, 0.42);
+    }
+
+    .card > img {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-accent);
+      background-color: var(--ocean-navy);
+      justify-self: center;
+    }
+
+    .card > header {
+      display: grid;
+      gap: 0.45rem;
+      align-content: start;
+    }
+
+    .card > header :is(h2, h3) {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+      line-height: 1.3;
+      color: var(--text-primary);
+    }
+
+    .card > p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .card > .card-summary {
+      display: grid;
+      gap: 0.9rem;
+      align-content: start;
+    }
+
+    .card > .card-summary p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+    }
+
+    .card > footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @container (min-width: 560px) {
+      .card:has(> img) {
+        grid-template-columns: minmax(180px, 224px) minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .card:has(> img) > img {
+        grid-column: 1;
+        grid-row: 1 / 4;
+        max-width: 100%;
+        align-self: center;
+      }
+
+      .card:has(> img) > header,
+      .card:has(> img) > .card-summary,
+      .card:has(> img) > footer {
+        grid-column: 2;
+      }
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      width: fit-content;
+      padding: 0.28rem 0.75rem;
+      border-radius: var(--radius-pill);
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.34);
+      color: var(--snail-amber);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      color: var(--snail-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chip-list li {
+      padding: 0.32rem 0.75rem;
+      border-radius: var(--radius-pill);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      color: var(--text-primary);
+      font-size: 0.84rem;
+    }
+
+    .card-link {
+      color: var(--snail-mint);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Subgrid Pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .pillar-index {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--snail-mint);
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 780px) {
+      .pillars-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: auto;
+      }
+
+      .pillars-grid > .card {
+        grid-row: span 4;
+        grid-template-rows: subgrid;
+        gap: 0.85rem;
+      }
+    }
+
+    /* Info / Privacy grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 740px) {
+      .info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 0;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.4rem 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.2);
+      font-size: 0.93rem;
+    }
+
+    .meta-row:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .meta-row dt {
+      color: var(--text-muted);
+    }
+
+    .meta-row dd {
+      margin: 0;
+      color: var(--text-primary);
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .meta-row dd a {
+      color: var(--snail-cyan);
+      text-decoration: none;
+    }
+
+    .meta-row dd a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact-card {
+      background:
+        radial-gradient(520px 240px at 95% 15%, rgba(56, 189, 248, 0.14), transparent 70%),
+        linear-gradient(155deg, rgba(17, 40, 68, 0.92), rgba(10, 26, 46, 0.96));
+      border-color: var(--border-accent);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .email-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-md);
+      background: rgba(7, 20, 38, 0.75);
+      border: 1px solid var(--border-accent);
+      font-family: var(--font-mono);
+      font-size: 0.98rem;
+      color: var(--snail-cyan);
+      text-decoration: none;
+    }
+
+    .email-pill:hover {
+      border-color: var(--snail-mint);
+      color: var(--snail-mint);
+    }
+
+    .copy-feedback {
+      min-height: 1.4em;
+      font-size: 0.88rem;
+      color: var(--snail-mint);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 2rem;
+      padding: 2rem 0 2.75rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+    }
+
+    .footer-inner a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      color: var(--snail-cyan);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .nav-bar {
+        flex-wrap: wrap;
+        padding: 0.65rem 0;
+      }
+
+      .brand-en {
+        display: none;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .nav-links a {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.86rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳至正文内容</a>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="#top" aria-label="慢慢向前工作室首页">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>慢慢向前工作室</span>
+        <span class="brand-en">StepForward Studio</span>
+      </a>
+      <nav aria-label="主导航">
+        <ul class="nav-links">
+          <li><a href="#games">游戏作品</a></li>
+          <li><a href="#about">开发理念</a></li>
+          <li><a href="#privacy">厂商与隐私</a></li>
+          <li><a href="#contact">联系我们</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="top" class="hero">
+      <div class="container">
+        <div class="hero-emblem">
+          <img
+            class="hero-logo"
+            src="./logo.png"
+            alt="慢慢向前工作室（StepForward Studio）像素海螺官方 Logo"
+            width="148"
+            height="148"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </div>
+        <div class="hero-badge">Independent Game Studio · Deep-Ocean Craft</div>
+        <h1>慢慢向前工作室</h1>
+        <p class="hero-subtitle">StepForward Studio</p>
+        <p class="hero-tagline">
+          专注轻量化精品独立游戏研发与长线打磨。像像素海螺一样稳步向前，让每一次蓄力甩竿、守塔迎敌与破浪航行都充满清晰手感与惊喜反馈。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#games">查看研发中作品</a>
+          <a class="btn btn-secondary" href="#contact">联系工作室 · 玩家反馈</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="games" class="section" aria-labelledby="games-heading">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Featured Project</span>
+            <h2 id="games-heading">代表游戏作品</h2>
+          </div>
+          <p class="section-note">海岸塔防 × 物理甩竿海钓 × 环形大洋航行</p>
+        </div>
+
+        <div class="card-container">
+          <article class="card">
+            <img
+              src="./logo.png"
+              alt="慢慢向前工作室出品《守塔甩竿打螃蟹》品牌徽章"
+              width="220"
+              height="220"
+              loading="lazy"
+              decoding="async"
+            >
+            <header>
+              <span class="status-pill">TapTap 锐意研发中 · 跨平台打磨</span>
+              <h3>《守塔甩竿打螃蟹》</h3>
+              <span class="card-subtitle">Harbor Defense &amp; Deep-Sea Fishing</span>
+            </header>
+            <div class="card-summary">
+              <p>
+                以海港要塞为舞台的 3D 轻度策略动作游戏。战时按住充能发射主炮、部署磁暴盾墙与冰霜炮塔并调度 Q/W/E/R 战术空袭；休整期随时抛竿海钓、熬制鲜汤增益，甚至驾船驶入环形大洋探索灯塔岛屿与深渊鱼涡，将海上收获反哺海港城邦演化。
+              </p>
+              <ul class="chip-list" aria-label="游戏特色标签">
+                <li>3D 海岸线守塔与空袭大招</li>
+                <li>蓄力抛投 × 悬空拉竿手操海钓</li>
+                <li>环形大洋 3D 破浪航行与声呐探索</li>
+                <li>无套路逼氪 · 轻松解压多循环成长</li>
+              </ul>
+            </div>
+            <footer>
+              <span>研发 / 发行：慢慢向前工作室（StepForward Studio）</span>
+              <a class="card-link" href="#contact">试玩建议与 Bug 反馈 &rarr;</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Studio Philosophy</span>
+            <h2 id="about-heading">我们的开发理念</h2>
+          </div>
+          <p class="section-note">把时间花在手感和乐趣本身</p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="card">
+            <span class="pillar-index">01 / Mechanics Feel</span>
+            <header>
+              <h3>把操作手感打磨到位</h3>
+            </header>
+            <p>
+              无论是一条鱼线的张力弧度、上鱼瞬间的悬空拽拉，还是键盘与触屏的顺手映射，我们都通过高频实机试玩反复调校到干净利落。
+            </p>
+            <footer>拒绝敷衍交互 · 持续真机验证</footer>
+          </article>
+
+          <article class="card">
+            <span class="pillar-index">02 / Interlocking Loops</span>
+            <header>
+              <h3>轻快有机的多玩法咬合</h3>
+            </header>
+            <p>
+              不把玩法堆成孤立小游戏：垂钓所得可熬汤加伤，航海带回晶能升级炮台与城邦，每一种喜好都能推动主线推进。
+            </p>
+            <footer>低学习门槛 · 高正向反馈</footer>
+          </article>
+
+          <article class="card">
+            <span class="pillar-index">03 / Step Forward</span>
+            <header>
+              <h3>与玩家一起慢慢向前</h3>
+            </header>
+            <p>
+              保持独立团队的敏捷与真诚，认真阅读每一条社区评论与反馈工单，小步快跑地打磨 UI 布局、性能适配与内容厚度。
+            </p>
+            <footer>欢迎通过邮箱随时交流建议</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section" aria-labelledby="privacy-heading">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Publisher &amp; Compliance</span>
+            <h2 id="privacy-heading">厂商资质信息与隐私声明</h2>
+          </div>
+          <p class="section-note">用于游戏分发平台核验与玩家技术支持</p>
+        </div>
+
+        <div class="info-grid">
+          <article class="card">
+            <span class="pillar-index">Studio Profile</span>
+            <header>
+              <h3>开发商基础信息</h3>
+            </header>
+            <div class="card-summary">
+              <dl class="meta-list">
+                <div class="meta-row">
+                  <dt>工作室中文名</dt>
+                  <dd>慢慢向前工作室</dd>
+                </div>
+                <div class="meta-row">
+                  <dt>英文 / 厂商别名</dt>
+                  <dd>StepForward Studio</dd>
+                </div>
+                <div class="meta-row">
+                  <dt>官方主页</dt>
+                  <dd><a href="https://ai-chen2050.github.io/studio/">https://ai-chen2050.github.io/studio/</a></dd>
+                </div>
+                <div class="meta-row">
+                  <dt>官方联系邮箱</dt>
+                  <dd><a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a></dd>
+                </div>
+              </dl>
+            </div>
+            <footer>所有官方信息以上述站点与邮箱为准</footer>
+          </article>
+
+          <article class="card">
+            <span class="pillar-index">Privacy Policy</span>
+            <header>
+              <h3>玩家隐私保护声明</h3>
+            </header>
+            <div class="card-summary">
+              <p>
+                慢慢向前工作室高度重视玩家隐私与数据安全。我们出品的游戏仅在本地存档、基础运行稳定性统计，以及遵循平台规范（如 TapTap 登录/成就/合规激励广告服务）的必要范围内使用相关数据。
+              </p>
+              <p>
+                我们不会收集与游戏功能无关的敏感个人信息，也不会向无关第三方出售或共享玩家数据。如您对隐私保护、青少年模式或账号数据清除有任何需求，请发送邮件至官方支持邮箱，我们将尽快核实处理。
+              </p>
+            </div>
+            <footer>最近更新：2026 年 11 月</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <article class="card contact-card">
+          <header>
+            <span class="section-kicker">Contact &amp; Support</span>
+            <h2 id="contact-heading">联系慢慢向前工作室</h2>
+          </header>
+          <div class="card-summary">
+            <p>
+              无论是玩家玩法建议、实机 Bug 反馈，还是 TapTap / 独立游戏合作交流，欢迎通过下方官方邮箱与我们取得联系：
+            </p>
+            <div class="contact-actions">
+              <a class="email-pill" href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>
+              <button type="button" class="btn btn-secondary" id="copy-email-btn">复制邮箱地址</button>
+            </div>
+            <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+          </div>
+          <footer>工作日 48 小时内查收邮件并回复</footer>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 慢慢向前工作室 · StepForward Studio</span>
+      <span>
+        <a href="https://ai-chen2050.github.io/studio/">ai-chen2050.github.io/studio</a>
+        &middot;
+        <a href="mailto:blake.chen94@gmail.com">blake.chen94@gmail.com</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const copyBtn = document.getElementById("copy-email-btn");
+      const feedback = document.getElementById("copy-feedback");
+      const email = "blake.chen94@gmail.com";
+
+      if (!copyBtn || !feedback) {
+        return;
+      }
+
+      copyBtn.addEventListener("click", async function () {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(email);
+            feedback.textContent = "已复制到剪贴板：" + email;
+          } else {
+            feedback.textContent = "请直接复制或点击邮箱：" + email;
+          }
+        } catch (_err) {
+          feedback.textContent = "浏览器限制了剪贴板权限，请点击邮箱直接发送邮件。";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
